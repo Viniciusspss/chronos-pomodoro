@@ -1,10 +1,16 @@
 import './styles/theme.css'
 import './styles/global.css'
+import { Heading } from './components/Heading'
+import { Timer } from 'lucide-react'
 
 export function App() {
 
   return (
-    <h1>Hello world!</h1>
+    <Heading>Hello World 
+      <button>
+        <Timer/>
+        </button>
+    </Heading>
   )
 }
 
