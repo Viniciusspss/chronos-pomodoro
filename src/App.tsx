@@ -4,6 +4,7 @@ import { Logo } from "./components/Logo";
 import { Container } from "./components/Container";
 import { Menu } from "./components/Menu";
 import { CountDown } from "./components/CountDown";
+import { Form } from "./components/Form";
 
 export function App() {
   return (
@@ -16,6 +17,9 @@ export function App() {
       </Container>
       <Container>
         <CountDown />
+      </Container>
+      <Container>
+        <Form />
       </Container>
     </>
   );
