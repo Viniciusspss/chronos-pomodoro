@@ -1,3 +1,4 @@
+import { Cycles } from "../Cycles";
 import { Input } from "../Input";
 import styles from "./styles.module.css";
 
@@ -18,8 +19,7 @@ export function Form() {
       </div>
 
       <div className={styles.formRow}>
-        <p>Ciclos</p>
-        <p>0 0 0 0 0</p>
+        <Cycles />
       </div>
 
       <div className={styles.formRow}>
