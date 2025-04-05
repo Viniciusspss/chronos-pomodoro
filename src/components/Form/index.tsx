@@ -5,7 +5,12 @@ export function Form() {
   return (
     <form className={styles.form} action="">
       <div className={styles.formRow}>
-        <Input type="text" id="input" />
+        <Input
+          type="text"
+          id="input"
+          labelText="task"
+          placeholder="Digite algo"
+        />
       </div>
 
       <div className={styles.formRow}>
