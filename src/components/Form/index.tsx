@@ -5,8 +5,12 @@ import { Input } from "../Input";
 import styles from "./styles.module.css";
 
 export function Form() {
+  function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+  }
+
   return (
-    <form className={styles.form} action="">
+    <form onSubmit={handleCreateNewTask} className={styles.form} action="">
       <div className={styles.formRow}>
         <Input
           type="text"
