@@ -6,10 +6,13 @@ import styles from "./styles.module.css";
 import { useRef } from "react";
 import { TaskModel } from "../../models/TaskModel";
 import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
+import { getNextCycle } from "../../utils/getNextCycle";
 
 export function Form() {
-  const { setState } = useTaskContext();
+  const { state, setState } = useTaskContext();
   const taskNameInput = useRef<HTMLInputElement>(null);
+
+  const nextCycle = getNextCycle(state.currentCycle);
 
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -17,7 +20,6 @@ export function Form() {
     if (!taskNameInput.current) return;
 
     const taskName = taskNameInput.current.value.trim();
-    console.log(taskName);
 
     if (!taskName) {
       alert("Digite o nome da tarefa");
@@ -40,7 +42,7 @@ export function Form() {
       return {
         ...prevState,
         activeTask: newTask,
-        currentCycle: 1,
+        currentCycle: nextCycle,
         secondsRemaining,
         formattedSecondsRemaining: "00:00",
         tasks: [...prevState.tasks, newTask],
