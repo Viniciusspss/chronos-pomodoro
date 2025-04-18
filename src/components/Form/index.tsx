@@ -54,6 +54,20 @@ export function Form() {
     });
   }
 
+  function handleInterruptTask(
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) {
+    event.preventDefault();
+    setState((prevState) => {
+      return {
+        ...prevState,
+        activeTask: null,
+        secondsRemaining: 0,
+        formattedSecondsRemaining: "00:00",
+      };
+    });
+  }
+
   return (
     <form onSubmit={handleCreateNewTask} className={styles.form} action="">
       <div className={styles.formRow}>
@@ -79,13 +93,22 @@ export function Form() {
 
       <div className={styles.formRow}>
         {state.activeTask ? (
-          <Button type="button" color="red" icon={<StopCircleIcon />} />
-        ) : (
           <Button
             aria-label="Interroper tarefa"
             title="Interromper tarefa"
+            type="button"
+            color="red"
+            icon={<StopCircleIcon />}
+            onClick={handleInterruptTask}
+            key="stop"
+          />
+        ) : (
+          <Button
+            aria-label="Iniciar nova tarefa"
+            title="Iniciar nova tarefa"
             type="submit"
             icon={<PlayCircleIcon />}
+            key="play"
           />
         )}
       </div>
