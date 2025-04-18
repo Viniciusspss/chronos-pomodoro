@@ -64,6 +64,12 @@ export function Form() {
         activeTask: null,
         secondsRemaining: 0,
         formattedSecondsRemaining: "00:00",
+        tasks: prevState.tasks.map((task) => {
+          if (prevState.activeTask && task.id === prevState.activeTask.id) {
+            return { ...task, interruptDate: Date.now() };
+          }
+          return task;
+        }),
       };
     });
   }
