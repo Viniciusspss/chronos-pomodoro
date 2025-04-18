@@ -1,4 +1,4 @@
-import { PlayCircleIcon } from "lucide-react";
+import { PlayCircleIcon, StopCircleIcon } from "lucide-react";
 import { Button } from "../Button";
 import { Cycles } from "../Cycles";
 import { Input } from "../Input";
@@ -63,6 +63,7 @@ export function Form() {
           labelText="task"
           placeholder="Digite algo"
           ref={taskNameInput}
+          disabled={!!state.activeTask}
         />
       </div>
 
@@ -77,7 +78,16 @@ export function Form() {
       )}
 
       <div className={styles.formRow}>
-        <Button icon={<PlayCircleIcon />} />
+        {state.activeTask ? (
+          <Button type="button" color="red" icon={<StopCircleIcon />} />
+        ) : (
+          <Button
+            aria-label="Interroper tarefa"
+            title="Interromper tarefa"
+            type="submit"
+            icon={<PlayCircleIcon />}
+          />
+        )}
       </div>
     </form>
   );
