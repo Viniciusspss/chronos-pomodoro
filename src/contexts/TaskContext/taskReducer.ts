@@ -24,7 +24,18 @@ export function taskReducer(
     }
 
     case TaskActionsTypes.INTERRUPT_TASK: {
-      return state;
+      return {
+        ...state,
+        activeTask: null,
+        secondsRemaining: 0,
+        formattedSecondsRemaining: "00:00",
+        tasks: state.tasks.map((task) => {
+          if (state.activeTask && task.id === state.activeTask.id) {
+            return { ...task, interruptDate: Date.now() };
+          }
+          return task;
+        }),
+      };
     }
 
     default:

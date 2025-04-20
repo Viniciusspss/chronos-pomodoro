@@ -12,5 +12,4 @@ export type TaskActionModel =
     }
   | {
       type: TaskActionsTypes.INTERRUPT_TASK;
-      payload: TaskModel;
     };

@@ -46,20 +46,7 @@ export function Form() {
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) {
     event.preventDefault();
-    // setState((prevState) => {
-    //   return {
-    //     ...prevState,
-    //     activeTask: null,
-    //     secondsRemaining: 0,
-    //     formattedSecondsRemaining: "00:00",
-    //     tasks: prevState.tasks.map((task) => {
-    //       if (prevState.activeTask && task.id === prevState.activeTask.id) {
-    //         return { ...task, interruptDate: Date.now() };
-    //       }
-    //       return task;
-    //     }),
-    //   };
-    // });
+    dispatch({ type: TaskActionsTypes.INTERRUPT_TASK });
   }
 
   return (
