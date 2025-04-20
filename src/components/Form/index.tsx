@@ -10,7 +10,6 @@ import { getNextCycle } from "../../utils/getNextCycle";
 import { getNextCycleType } from "../../utils/getNextType";
 import { TaskActionsTypes } from "../../contexts/TaskContext/taskActions";
 import { Tips } from "../Tips";
-import { TimerWorkerManager } from "../../workers/TimerWorkerManager";
 
 export function Form() {
   const { state, dispatch } = useTaskContext();
@@ -42,8 +41,6 @@ export function Form() {
     };
 
     dispatch({ type: TaskActionsTypes.START_TASK, payload: newTask });
-
-    const worker = TimerWorkerManager.getInstance();
   }
 
   function handleInterruptTask(
