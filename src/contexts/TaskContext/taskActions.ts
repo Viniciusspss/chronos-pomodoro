@@ -5,6 +5,7 @@ export enum TaskActionsTypes {
   INTERRUPT_TASK = "INTERRUPT_TASK",
   COUNT_DOWN = "COUNT_DOWN",
   COMPLETE_TASK = "COMPLETE_TASK",
+  RESET = "RESET",
 }
 
 export type TaskActionModel =
@@ -21,4 +22,7 @@ export type TaskActionModel =
     }
   | {
       type: TaskActionsTypes.COMPLETE_TASK;
+    }
+  | {
+      type: TaskActionsTypes.RESET;
     };
