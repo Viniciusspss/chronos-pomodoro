@@ -32,6 +32,6 @@
 .responsiveTable th,
 .responsiveTable td {
   border-bottom: 0.2rem solid var(--gray-700);
-  text-align: left;
+  text-align: center;
   padding: 1.6rem;
 }

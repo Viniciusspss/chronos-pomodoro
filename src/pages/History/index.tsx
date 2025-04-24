@@ -4,7 +4,10 @@ import { Heading } from "../../components/Heading";
 import { MainTemplate } from "../../templates/MainTemplate/index";
 import { Button } from "./../../components/Button/index";
 import styles from "./styles.module.css";
+import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
+import { formatDate } from "../../utils/formatDate";
 export function History() {
+  const { state } = useTaskContext();
   return (
     <MainTemplate>
       <Container>
@@ -33,9 +36,17 @@ export function History() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th></th>
-              </tr>
+              {state.tasks.map((task) => {
+                return (
+                  <tr key={task.id}>
+                    <td>{task.name}</td>
+                    <td>{task.duration}min</td>
+                    <td>{formatDate(task.startDate)}</td>
+                    <td>{task.interruptDate}</td>
+                    <td>{task.type}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
