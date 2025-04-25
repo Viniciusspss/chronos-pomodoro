@@ -8,6 +8,7 @@ import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
 import { formatDate } from "../../utils/formatDate";
 import { getTaskStatus } from "../../utils/getTaskStatus";
 import { TaskActionsTypes } from "../../contexts/TaskContext/taskActions";
+import { showMessage } from "../../adapters/showMessage";
 export function History() {
   const { state, dispatch } = useTaskContext();
   const hasTasks = state.tasks.length >= 1;
@@ -16,8 +17,14 @@ export function History() {
   });
 
   function handleResetHistory() {
-    if (!confirm("Tem certeza que deseja limpar o histórico?")) return;
-    dispatch({ type: TaskActionsTypes.RESET });
+    showMessage.confirm(
+      "Tem certeza que deseja limpar o histórico?",
+      (confirmation) => {
+        if (confirmation) {
+          dispatch({ type: TaskActionsTypes.RESET });
+        }
+      }
+    );
   }
 
   return (
