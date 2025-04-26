@@ -17,6 +17,7 @@ export function History() {
   });
 
   function handleResetHistory() {
+    showMessage.dismiss();
     showMessage.confirm(
       "Tem certeza que deseja limpar o histórico?",
       (confirmation) => {

@@ -69,6 +69,15 @@ export function taskReducer(
       };
     }
 
+    case TaskActionsTypes.UPDATE_TASK: {
+      return {
+        ...state,
+        config: {
+          ...action.payload,
+        },
+      };
+    }
+
     default:
       return state;
   }

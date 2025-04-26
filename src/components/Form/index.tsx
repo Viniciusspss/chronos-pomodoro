@@ -60,7 +60,7 @@ export function Form() {
         <Input
           type="text"
           id="input"
-          labelText="task"
+          labelText="Tarefa"
           placeholder="Digite algo"
           ref={taskNameInput}
           disabled={!!state.activeTask}
