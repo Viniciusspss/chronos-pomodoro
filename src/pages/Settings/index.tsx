@@ -5,7 +5,7 @@ import { Heading } from "../../components/Heading";
 import { Input } from "../../components/Input";
 import { MainTemplate } from "../../templates/MainTemplate/index";
 import styles from "./style.module.css";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
 import { TaskActionsTypes } from "../../contexts/TaskContext/taskActions";
 import { showMessage } from "../../adapters/showMessage";
@@ -15,6 +15,10 @@ export function Settings() {
   const workTimeRef = useRef<HTMLInputElement>(null);
   const shortBreakTimeRef = useRef<HTMLInputElement>(null);
   const longBreakTimeRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    document.title = "Configurações - Chronos Pomodoro";
+  }, []);
 
   function handleSetTime(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

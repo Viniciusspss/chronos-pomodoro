@@ -9,12 +9,17 @@ import { formatDate } from "../../utils/formatDate";
 import { getTaskStatus } from "../../utils/getTaskStatus";
 import { TaskActionsTypes } from "../../contexts/TaskContext/taskActions";
 import { showMessage } from "../../adapters/showMessage";
+import { useEffect } from "react";
 export function History() {
   const { state, dispatch } = useTaskContext();
   const hasTasks = state.tasks.length >= 1;
   const sortedTasks = [...state.tasks].sort((a, b) => {
     return b.startDate - a.startDate;
   });
+
+  useEffect(() => {
+    document.title = "Histórico - Chronos Pomodoro";
+  }, []);
 
   function handleResetHistory() {
     showMessage.dismiss();
